@@ -165,17 +165,17 @@ Zone reloads, MTA restarts, etc. are not in scope for this project.[^3]
 
 ### Targets
 
-_default_
-: Build the DKIM keys, zone files, and DDNS (*nsupdate* command) files in the `selector` subdirectory.
+**_default_**\
+Build the DKIM keys, zone files, and DDNS (*nsupdate* command) files in the `selector` subdirectory.
 
-files
-: Build the DKIM keys and zone files only.
+**files**\
+Build the DKIM keys and zone files only.
 
-ddns
-: Build the DKIM keys and DDNS files only.
+**ddns**\
+Build the DKIM keys and DDNS files only.
 
-install
-: Install the (active) key and zone files into `DKIM_DIR` and `ZONE_DIR` respectively. The file modes are set per the following variables.
+**install**\
+Install the (active) key and zone files into `DKIM_DIR` and `ZONE_DIR` respectively. The file modes are set per the following variables.
 
    | Variable             | Default  | Notes
    |:-------------------- |:-------- |:-----
@@ -184,52 +184,52 @@ install
    | `install_dkim_flags` | _None._  | Extra flags to *install* (e.g. `"-o root -g Debian-exim"`).
    | `install_zone_flags` | _None._  | Extra flags to *install* (e.g. `"-o root -g bind"`).
 
-install-keys
-: Install the key files into `DKIM_DIR` (for mailserver configuration).
+**install-keys**\
+Install the key files into `DKIM_DIR` (for mailserver configuration).
 
-install-zones install-zones-key
-: Install the zone files with active keys into `ZONE_DIR` (for nameserver configuration).
+**install-zones install-zones-key**\
+Install the zone files with active keys into `ZONE_DIR` (for nameserver configuration).
 
-install-zones-revoke
-: Install the zone files with revoked keys into `ZONE_DIR` (for nameserver configuration).
+**install-zones-revoke**\
+Install the zone files with revoked keys into `ZONE_DIR` (for nameserver configuration).
 
-uninstall
-: Uninstall (remove) the key and zone files.
+**uninstall**\
+Uninstall (remove) the key and zone files.
 
-uninstall-keys
-: Uninstall (remove) the key files. `DKIM_DIR` is not removed.
+**uninstall-keys**\
+Uninstall (remove) the key files. `DKIM_DIR` is not removed.
 
-uninstall-zones
-: Uninstall (remove) the zone files. `ZONE_DIR` is not removed.
+**uninstall-zones**\
+Uninstall (remove) the zone files. `ZONE_DIR` is not removed.
 
-add
-: Dynamically add the DKIM records to the appropriate zone on `DDNS_SERVER` using `DDNS_KEYFILE` (appropriate grants must be in place). Uses *nsupdate*.
+**add**\
+Dynamically add the DKIM records to the appropriate zone on `DDNS_SERVER` using `DDNS_KEYFILE` (appropriate grants must be in place). Uses *nsupdate*.
 
-delete
-: Dynamically delete the DKIM records from the appropriate zone on `DDNS_SERVER` using `DDNS_KEYFILE` (appropriate grants must be in place). Uses *nsupdate*.
+**delete**\
+Dynamically delete the DKIM records from the appropriate zone on `DDNS_SERVER` using `DDNS_KEYFILE` (appropriate grants must be in place). Uses *nsupdate*.
 
-revoke
-: Dynamically revoke the DKIM records in the appropriate zone on `DDNS_SERVER` using `DDNS_KEYFILE` (appropriate grants must be in place). Revocation entails publishing the DKIM record with a blank key (`"p="`). Uses *nsupdate*.
+**revoke**\
+Dynamically revoke the DKIM records in the appropriate zone on `DDNS_SERVER` using `DDNS_KEYFILE` (appropriate grants must be in place). Revocation entails publishing the DKIM record with a blank key (`"p="`). Uses *nsupdate*.
 
-delete-revoked
-: Dynamically delete the revoked DKIM records in the appropriate zone on `DDNS_SERVER` using `DDNS_KEYFILE` (appropriate grants must be in place). Uses *nsupdate*.
+**delete-revoked**\
+Dynamically delete the revoked DKIM records in the appropriate zone on `DDNS_SERVER` using `DDNS_KEYFILE` (appropriate grants must be in place). Uses *nsupdate*.
 Typically used after the keys have been revoked for some transitory period.
 
-tar
-: Package the files in a compressed *tar* file (`<selector>.tar.gz`). The creation state (including any `*.mk` files) and `STATE_DIR` are included so that the archive may be unpacked and run at a later date (and/or on another machine) with predictable results (see [Examples](#examples)).
+**tar**\
+Package the files in a compressed *tar* file (`<selector>.tar.gz`). The creation state (including any `*.mk` files) and `STATE_DIR` are included so that the archive may be unpacked and run at a later date (and/or on another machine) with predictable results (see [Examples](#examples)).
 
-clean
-: Remove the subdirectory and files associated with the `selector`.
+**clean**\
+Remove the subdirectory and files associated with the `selector`.
 
    > **Caution**: Unless installed/copied elsewhere, the files cannot be recovered.
     
-realclean
-: Like *clean*, but remove the *tar* file as well.
+**realclean**\
+Like *clean*, but remove the *tar* file as well.
 
    > **Caution**: Unless installed/copied elsewhere, the files cannot be recovered.
 
-state
-: Save the state variables in the `selector` subdirectory. See [Saved State](#saved-state).
+**state**\
+Save the state variables in the `selector` subdirectory. See [Saved State](#saved-state).
 
 The `add`, `delete`, `revoke`, and `revoke-deleted`  targets use the generated `*.{add,del,rev,delrev}-nsupdate` files in the `selector` subdirectory.
 
