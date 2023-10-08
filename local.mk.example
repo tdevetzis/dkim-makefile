@@ -1,0 +1,17 @@
+# All customizable variables with default settings. Copy to "local.mk"
+# and customize.  Include only the variables you want to change.
+#
+domains		:= 
+selector	:= $(shell date +%Y%m%d)
+selector_prefix	:=
+selector_suffix	:= -$(shell cat /dev/random | head -c4 | od -An -xv | tr -d ' \n')
+
+KEY_DIR		= /etc/exim4/dkim/$(selector)
+ZONE_DIR	= /etc/bind/zones/dkim/$(selector)
+DDNS_KEYFILE	= /etc/bind/K$(DOMAIN).key
+PORTABLE_DIR 	=
+DKIM_DEFAULTS	= "V=DKIM1;k=rsa;h=sha256;t=s;"
+KEYSIZE		= 2048
+DDNS_SERVER	= localhost
+TTL		=
+NSUPDATE_TTL	= 60
