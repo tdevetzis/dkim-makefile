@@ -397,7 +397,7 @@ make delete selector="<selector>"
 The `STATE_DIR` variable specifies a directory to include in the archive. For example, one possible use case adds the (perhaps temporary) TSIG keys to this directory for portable execution; assuming the subdirectory `tsig-keys` contains the files `Kfoo.com.key` and `Kbar.net.key`:
 
 ```sh
-make tar domains="foo.com bar.net" STATE_DIR="tsig-keys" NS_KEY_FILE='$(STATE_DIR/K$(DOMAIN).key'
+make tar domains="foo.com bar.net" STATE_DIR="tsig-keys" NS_KEY_FILE='$(STATE_DIR)/K$(DOMAIN).key'
 ```
 
 The tar file can be copied and utilized elsewhere. Once unpacked the TSIG keys are available:
