@@ -33,11 +33,10 @@ See [Usage](#usage) for more options.
 
 ## Configuration
 
-Configuration parameters may be set as environment variables, in the top section of the Makefile, or in a separate configuration (makefile) as `make` variables (preferred). The Makefile will include (if present) `local.mk` followed by any other files ending in `.mk`. This is useful to set relatively static parameters once in `local.mk`:
+Configuration parameters may be set as environment variables, in the top section of the Makefile, or in a separate configuration (makefile) as `make` variables (preferred). The Makefile will include (if present) `local.mk` followed by any other files ending in `.mk`. This is useful to set relatively static parameters once in `local.mk`, for example:
 
 ```sh
 domains := $(shell cat /etc/domains.txt)
-selector := $(shell hostname)-2022
 selector_suffix :=
 DKIM_DIR = /etc/dkim
 ZONE_DIR = /etc/bind/zones/$(DOMAIN)
@@ -135,7 +134,7 @@ Uppercase parameters are recursively expanded. The variable `DOMAIN` is availabl
 - Create a `local.mk` file and set any variable definitions that will remain (somewhat) static (see `local.mk.example`).
   - Common candidates:
     - `domains`, `DKIM_DIR`, `ZONE_DIR`, `DDNS_KEYFILE`, `DDNS_SERVER`.
-    - `selector`, `selector_prefix`, `selector_suffix`.
+    - `selector_prefix`, `selector_suffix`.
   - Less common: `DKIM_DEFAULTS`,`dnsmode`, `keymode`, `install_dkim_flags`, `install_zone_flags`.
 
 ### Ongoing
