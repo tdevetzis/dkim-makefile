@@ -117,7 +117,7 @@ Uppercase parameters are recursively expanded. The variable `DOMAIN` is availabl
 | `ZONE_DIR` | `/etc/bind/zones/dkim/$(selector)` | Zone file installation directory.[^2]
 | `DDNS_KEYFILE` | `/etc/bind/K$(DOMAIN).key` | TSIG authentication key used by *nsupdate* (for dynamic updates).[^2]
 | `STATE_DIR` | _None._ | Directory included with *tar* bundle. See [Examples](#add-state-to-the-archive) for ideas.[^2]
-| `DKIM_DEFAULTS` | `"V=DKIM1;k=rsa;h=sha256;t=s;"` | DKIM tags. *Note that the quotes and trailing slash are required*. This cannot be set via an environment variable and should be changed in a local `.mk` file if needed.[^2]
+| `DKIM_DEFAULTS` | `"V=DKIM1;k=rsa;h=sha256;t=s;"` | DKIM tags. *Note that the quotes and trailing semicolon are required*. This cannot be set via an environment variable and should be changed in a local `.mk` file if needed.[^2]
 | `KEYSIZE` | `2048` | Private key size.[^2]
 | `DDNS_SERVER` | `localhost` | DNS server for dynamic updates. Set this to use the dynamic update targets. See the Makefile for examples.[^2]
 | `TTL` | _None._ | The TTL for zone file records. Leave blank (the default) to inherit from the parent zones or other nameserver settings.[^2]
@@ -131,7 +131,7 @@ Uppercase parameters are recursively expanded. The variable `DOMAIN` is availabl
 
 - Create a directory for DKIM management.
 - Clone this repository.
-- Create a `local.mk` file and set any variable definitions that will remain (somewhat) static (see `local.mk.example`).
+- (Optional) Create a `local.mk` file and set any variable definitions that will remain (somewhat) static (see `local.mk.example`).
   - Common candidates:
     - `domains`, `DKIM_DIR`, `ZONE_DIR`, `DDNS_KEYFILE`, `DDNS_SERVER`.
     - `selector_prefix`, `selector_suffix`.
